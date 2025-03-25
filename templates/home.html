@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Kaatha Book</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 125px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #1a73e8;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            display: block;
+            margin: 10px auto;
+            width: 200px;
+            padding: 12px;
+            background-color: #1a73e8;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .nav-btn:hover {
+            background-color: #135aba;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Kaatha Book Logo" class="logo">
+        <h1>Welcome to Sri Basaveshwara Rice Tech</h1>
+        <a href="/log-sheet" class="nav-btn">Go to Log Sheet</a>
+        <a href="/sales_bill" class="nav-btn">Sales Bill</a>
+        <a href="/purchase_bill" class="nav-btn">Purchase Bill</a>
+    </div>
+
+</body>
+</html>

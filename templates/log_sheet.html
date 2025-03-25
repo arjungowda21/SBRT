@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Sheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            color: #1a73e8;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        button:hover {
+            background-color: #135aba;
+            transform: translateY(-2px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #1a73e8;
+            color: white;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #e8f0fe;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #34a853;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #2a7d42;
+        }
+    </style>
+    <script>
+        function confirmSubmit() {
+            let particulars = document.getElementById("particulars").value;
+            if (particulars.trim() === "") {
+                alert("Particulars cannot be empty!");
+                return false;
+            }
+            return true;
+        }
+
+        function changeDate() {
+            let selectedDate = document.getElementById("datePicker").value;
+            window.location.href = "/log-sheet?date=" + selectedDate;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Log Sheet for <input type="date" id="datePicker" value="{{ selected_date }}" onchange="changeDate()"></h1>
+
+    <div class="container">
+        <form method="POST" class="form-container" onsubmit="return confirmSubmit()">
+            <input type="text" id="particulars" name="particulars" placeholder="Enter Particulars" required>
+            <input type="number" step="0.01" name="credit" placeholder="Credit">
+            <input type="number" step="0.01" name="debit" placeholder="Debit">
+            <button type="submit">Add Entry</button>
+        </form>
+
+        <table>
+            <tr>
+                <th>Particulars</th>
+                <th>Credit</th>
+                <th>Debit</th>
+            </tr>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.particulars }}</td>
+                <td>{{ log.credit if log.credit else '-' }}</td>
+                <td>{{ log.debit if log.debit else '-' }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="total-row">
+                <td><b>Total</b></td>
+                <td><b>{{ total.total_credit }}</b></td>
+                <td><b>{{ total.total_debit }}</b></td>
+            </tr>
+        </table>
+
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+
+</body>
+</html>
