@@ -63,5 +63,5 @@ def sales_bill():
 def purchase_bill():
     return render_template('purchase.html')
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     app.run(debug=True)
