@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Initialize Firebase Admin SDK
 cred = credentials.Certificate("sbrt-f86f2-firebase-adminsdk-fbsvc-752da26068.json")  # Replace with your actual path
