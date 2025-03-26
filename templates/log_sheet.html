@@ -127,9 +127,9 @@
             </tr>
             {% for log in logs %}
             <tr>
-                <td>{{ log.particulars }}</td>
-                <td>{{ log.credit if log.credit else '-' }}</td>
-                <td>{{ log.debit if log.debit else '-' }}</td>
+                <td>{{ log.Particulars }}</td>
+                <td>{{ log.Credit if log.Credit else '-' }}</td>
+                <td>{{ log.Debit if log.Debit else '-' }}</td>
             </tr>
             {% endfor %}
             <tr class="total-row">
