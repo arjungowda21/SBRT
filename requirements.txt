@@ -2,3 +2,8 @@ Flask
 firebase-admin
 gunicorn
 google-cloud-firestore
+gspread 
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2 
+google-api-python-client
